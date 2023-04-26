@@ -2,6 +2,7 @@
 /**
  * intHdle - Handling int and decimal prints
  * @arg: arg
+ *
  */
 void intHdle(int x)
 {
