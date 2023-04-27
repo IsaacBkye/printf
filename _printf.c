@@ -34,6 +34,8 @@ int _printf(const char *fmt, ...)
 {
 	va_list lst;
 	int i = 0;
+	char n, *a;
+	/*int *b = malloc(sizeof(int *));*/
 
 	va_start(lst, fmt);
 	
@@ -41,9 +43,30 @@ int _printf(const char *fmt, ...)
 		return (-1);
 	while (*fmt != '\0')
 	{
+		if (*fmt != '%')
+		{
+			fwrite(fmt, 1, 1, stdout);
+		} else
+		{
+			fmt++;
+			i++;
+			if (*fmt == '%')
+				fwrite(fmt, 1, 1, stdout);
+			else if (*fmt == 'c')
+			{
+				n = va_arg(lst, int);
+				fwrite(&n, 1, 1, stdout);
+			}
+			else if (*fmt == 's')
+			{
+				a = va_arg(lst, char *);
+				fwrite(a, strlen(a), 1, stdout);
+			}
+		}
 		fmt++;
 		i++;
 	}
-	vprintf((fmt - i), lst);
+	va_end(lst);
+	/*vprintf((fmt - i), lst);*/
 	return (i);
 }
