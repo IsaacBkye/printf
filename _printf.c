@@ -15,10 +15,9 @@ void intHdle(int x)
 		j++;
 		i = i * 10;
 	}
-	j--;
 	while (j > 0)
 	{
-		a = (x) / (i * j);
+		a = x / (10 * j);
 		putchar('0' + a);
 		j--;
 	}
@@ -56,12 +55,12 @@ int _printf(const char *fmt, ...)
 			{
 				n = va_arg(lst, int);
 				fwrite(&n, 1, 1, stdout);
-			}
-			else if (*fmt == 's')
+			} else if (*fmt == 's')
 			{
 				a = va_arg(lst, char *);
 				fwrite(a, strlen(a), 1, stdout);
-			}
+			} else if (*fmt == 'd' || *fmt == 'i')
+				intHdle(va_arg(lst, int));
 		}
 		fmt++;
 		i++;
