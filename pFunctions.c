@@ -53,15 +53,31 @@ void prints(va_list lst)
 void printff(va_list lst)
 {
 	double F = (double)va_arg(lst, double);
-	int f = int(F);
+	int i = 0, j = 0, k = 0;
 
-
+	if (F < 0)
+	{
+		_putchar('-');
+	}
+	while (F / i > 0)
+	{
+		j++;
+		i = i * 10;
+	}
+	while (j > 0)
+	{
+		k = F / (10 * j);
+		_putchar('0' + k);
+		j--;
+	}
+	k = ((int)F % 10);
+	_putchar('0' + k);
 }
 /**
  * printper - Prints %
  * @lst: va_list
  */
-void printper(va_list lst)
+void printper(__attribute__ ((unused)) va_list lst)
 {
 	char a = '%';
 
