@@ -1,30 +1,5 @@
 #include "main.h"
 /**
- * intHdle - Handling int and decimal prints
- * @arg: arg
- *
- */
-void intHdle(int x)
-{
-	int i = 10;
-	int j = 0;
-	int a = 0;
-
-	while (x / i > 0)
-	{
-		j++;
-		i = i * 10;
-	}
-	while (j > 0)
-	{
-		a = x / (10 * j);
-		putchar('0' + a);
-		j--;
-	}
-	a = (x % 10);
-	putchar('0' + a);
-}
-/**
  * _printf - Imitates printf
  * @fmt: arg to be passed
  * Return: Length of that printed out
@@ -32,40 +7,39 @@ void intHdle(int x)
 int _printf(const char *fmt, ...)
 {
 	va_list lst;
-	int i = 0;
-	char n, *a;
-	/*int *b = malloc(sizeof(int *));*/
+	int w = 0, i = 0;
 
+	idxFunc writer[] = {
+		{'c', printc}, {'d', printd}, {'i', printd},
+		{'e', NULL}, {'E', NULL}, {'f', printff},
+		{'g', NULL}, {'G', NULL}, {'o', NULL},
+		{'s', prints}, {'u', NULL}, {'x', NULL},
+		{'X', NULL}, {'p', NULL}, {'n', NULL},
+		{'%', printper}, {'\0', NULL}
+	};
 	va_start(lst, fmt);
-	
 	if (!(fmt && *fmt))
 		return (-1);
 	while (*fmt != '\0')
 	{
 		if (*fmt != '%')
 		{
-			fwrite(fmt, 1, 1, stdout);
+			_putchar(*fmt);
+
 		} else
 		{
 			fmt++;
 			i++;
-			if (*fmt == '%')
-				fwrite(fmt, 1, 1, stdout);
-			else if (*fmt == 'c')
+			while (writer[w].c != '\0')
 			{
-				n = va_arg(lst, int);
-				fwrite(&n, 1, 1, stdout);
-			} else if (*fmt == 's')
-			{
-				a = va_arg(lst, char *);
-				fwrite(a, strlen(a), 1, stdout);
-			} else if (*fmt == 'd' || *fmt == 'i')
-				intHdle(va_arg(lst, int));
+				if (*fmt == writer[w].c)
+					writer->func(lst);
+				w++;
+			}
 		}
 		fmt++;
 		i++;
 	}
 	va_end(lst);
-	/*vprintf((fmt - i), lst);*/
 	return (i);
 }
