@@ -15,8 +15,8 @@ void printc(va_list *lst)
  */
 void printd(va_list *lst)
 {
-	int d = (int)va_arg(*lst, int);
-	int i = 10, j = 0, k = 0;
+	long int d = (int)va_arg(*lst, int);
+	long int i = 10, j = 0, k;
 	
 	if (d < 0)
 	{
@@ -28,12 +28,15 @@ void printd(va_list *lst)
 		j++;
 		i = i * 10;
 	}
-	while (j > 0)
+	if (j != 0)
 	{
-		k = d / (10 ^ j);
-		k = k % 10;
-		k == 0 ? _putchar('0') : _putchar('0' + k);
-		j--;
+		while (j > 0)
+		{
+			k = d / (10 ^ j);
+			k = k % 10;
+			k == 0 ? _putchar('0') : _putchar('0' + k);
+			j--;
+		}
 	}
 	k = (d % 10);
 	k == 0 ? _putchar('0') : _putchar('0' + k);
@@ -58,9 +61,9 @@ void prints(va_list *lst)
  */
 void printi(va_list *lst)
 {
-	int F = (int)va_arg(*lst, int);
-	int i = 0, j = 0;
-	int k = 0, l = 10;
+	long int F = (int)va_arg(*lst, int);
+	long int i = 10, j = 0;
+	long int k, l = 10;
 
 	if (F < 0)
 	{
@@ -72,12 +75,15 @@ void printi(va_list *lst)
 		j++;
 		i = i * 10;
 	}
-	while (j > 0)
+	if (j != 0)
 	{
-		k = F / (10 ^ j);
-		k = k % l;
-		k == 0 ? _putchar('0') : _putchar('0' + k);
-		j--;
+		while (j > 0)
+		{
+			k = F / (10 ^ j);
+			k = k % l;
+			k == 0 ? _putchar('0') : _putchar('0' + k);
+			j--;
+		}
 	}
 	k = (F % l);
 	k == 0 ? _putchar('0') : _putchar('0' + k);
