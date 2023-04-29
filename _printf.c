@@ -11,11 +11,10 @@ int _printf(const char *fmt, ...)
 
 	idxFunc writer[] = {
 		{'c', printc}, {'d', printd}, {'i', printd},
-		{'e', NULL}, {'E', NULL}, {'f', printff},
-		{'g', NULL}, {'G', NULL}, {'o', NULL},
-		{'s', prints}, {'u', NULL}, {'x', NULL},
-		{'X', NULL}, {'p', NULL}, {'n', NULL},
-		{'%', printper}, {'\0', NULL}
+		{'x', printHex}, {'X', printhex}, {'f', printff},
+		{'o', printo}, {'s', prints}, {'u', printu},
+		{'p', printHex}, {'%', printper}, {'*', printx},
+		{'\0', NULL}
 	};
 	va_start(lst, fmt);
 	if (!(fmt && *fmt))
@@ -33,7 +32,10 @@ int _printf(const char *fmt, ...)
 			while (writer[w].c != '\0')
 			{
 				if (*fmt == writer[w].c)
-					writer->func(lst);
+				{
+					writer[w].func(lst);
+					break;
+				}
 				w++;
 			}
 		}

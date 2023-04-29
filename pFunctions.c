@@ -6,7 +6,7 @@
 void printc(va_list lst)
 {
 	char a = (char)va_arg(lst, int);
-	
+
 	_putchar(a);
 }
 /**
@@ -18,6 +18,11 @@ void printd(va_list lst)
 	int d = (int)va_arg(lst, int);
 	int i = 10, j = 0, k = 0;
 	
+	if (d < 0)
+	{
+		_putchar('-');
+		d = -d;
+	}
 	while (d / i > 0)
 	{
 		j++;
@@ -25,12 +30,13 @@ void printd(va_list lst)
 	}
 	while (j > 0)
 	{
-		k = d / (10 * j);
-		_putchar('0' + k);
+		k = d / (10 ^ j);
+		k = k % 10;
+		k == 0 ? _putchar('0') : _putchar('0' + k);
 		j--;
 	}
 	k = (d % 10);
-	_putchar('0' + k);
+	k == 0 ? _putchar('0') : _putchar('0' + k);
 }
 /**
  * prints - Prints string
@@ -58,6 +64,7 @@ void printff(va_list lst)
 	if (F < 0)
 	{
 		_putchar('-');
+		F = -F;
 	}
 	while (F / i > 0)
 	{
@@ -66,12 +73,13 @@ void printff(va_list lst)
 	}
 	while (j > 0)
 	{
-		k = F / (10 * j);
-		_putchar('0' + k);
+		k = F / (10 ^ j);
+		k = k % 10;
+		k == 0 ? _putchar('0') : _putchar('0' + k);
 		j--;
 	}
 	k = ((int)F % 10);
-	_putchar('0' + k);
+	k == 0 ? _putchar('0') : _putchar('0' + k);
 }
 /**
  * printper - Prints %
@@ -79,7 +87,5 @@ void printff(va_list lst)
  */
 void printper(__attribute__ ((unused)) va_list lst)
 {
-	char a = '%';
-
-	_putchar(a);
+	_putchar('%');
 }
