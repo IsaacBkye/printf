@@ -3,9 +3,9 @@
  * printo - Prints unsigned int
  * @lst: va_list
  */
-void printo(va_list lst)
+void printo(va_list *lst)
 {
-	unsigned int u = va_arg(lst, unsigned int);
+	unsigned int u = va_arg(*lst, unsigned int);
         int i = 8, j = 0;
         unsigned int k;
 
@@ -28,9 +28,9 @@ void printo(va_list lst)
  * printu - Prints unsigned int
  * @lst: va_list
  */
-void printu(va_list lst)
+void printu(va_list *lst)
 {
-	unsigned int u = va_arg(lst, unsigned int);
+	unsigned int u = va_arg(*lst, unsigned int);
 	int i = 10, j = 0;
 	unsigned int k;
 	
@@ -53,9 +53,9 @@ void printu(va_list lst)
  * printx- Prints string
  * @lst: va_list
  */
-void printx(va_list lst)
+void printx(va_list *lst)
 {
-	char a = va_arg(lst, int);
+	char a = va_arg(*lst, int);
 	
 	_putchar(a + 0);
 }
@@ -63,9 +63,9 @@ void printx(va_list lst)
  * printHex - Prints hex
  * @lst: va_list
  */
-void printHex(va_list lst)
+void printHex(va_list *lst)
 {
-	unsigned int H = va_arg(lst, unsigned int);
+	unsigned int H = va_arg(*lst, unsigned int);
 	int i = 16, j = 0;
 	unsigned int k = 0;
 
@@ -90,9 +90,9 @@ void printHex(va_list lst)
  * printhex - Prints %
  * @lst: va_list
  */
-void printhex(va_list lst)
+void printhex(va_list *lst)
 {
-	unsigned int h = va_arg(lst, unsigned int);
+	unsigned int h = va_arg(*lst, unsigned int);
 	int i = 16, j = 0;
 	unsigned int k = 0;
 	while (h / i > 0)

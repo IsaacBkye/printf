@@ -10,9 +10,9 @@ int _printf(const char *fmt, ...)
 	int w = 0, i = 0;
 
 	idxFunc writer[] = {
-		{'c', printc}, {'d', printd}, {'i', printd},
-		{'x', printHex}, {'X', printhex}, {'f', printff},
-		{'o', printo}, {'s', prints}, {'u', printu},
+		{'c', printc}, {'d', printd}, {'i', printi},
+		{'x', printHex}, {'X', printhex}, {'o', printo},
+		{'s', prints}, {'u', printu},
 		{'p', printHex}, {'%', printper}, {'*', printx},
 		{'\0', NULL}
 	};
@@ -33,7 +33,7 @@ int _printf(const char *fmt, ...)
 			{
 				if (*fmt == writer[w].c)
 				{
-					writer[w].func(lst);
+					writer[w].func(&lst);
 					break;
 				}
 				w++;
