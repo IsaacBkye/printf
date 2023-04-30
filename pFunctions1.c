@@ -7,15 +7,15 @@
 int printo(va_list *lst)
 {
 	unsigned long int u = va_arg(*lst, unsigned int);
-        unsigned long int i = 8, j = 0, b;
-        unsigned int k;
+	unsigned long int i = 8, j = 0, b;
+	unsigned int k;
 	int a = 0, c;
 
-        while (u / i > 0)
-        {
-                j++;
-                i = i * 8;
-        }
+	while (u / i > 0)
+	{
+		j++;
+		i = i * 8;
+	}
 	if (j != 0)
 	{
 		while (j > 0)
@@ -76,12 +76,12 @@ int printu(va_list *lst)
 int printx(va_list *lst)
 {
 	char a = va_arg(*lst, int);
-	
+
 	_putchar(a + 0);
 	return (1);
 }
 /**
- * printHex - Prints hex
+ * printhex - Prints hex
  * @lst: va_list
  * Return: 1 on success
  */
@@ -112,12 +112,12 @@ int printhex(va_list *lst)
 	}
 	k = (H % 16);
 	k == 0 ? _putchar('0') : k < 10 ? _putchar(k + 48) :
-                        _putchar(55 + k);
+		_putchar(55 + k);
 	a += 1;
 	return (a);
 }
 /**
- * printhex - Prints %
+ * printHex - Prints %
  * @lst: va_list
  * Return: 1 on success
  */
@@ -127,7 +127,7 @@ int printHex(va_list *lst)
 	unsigned long int i = 16, j = 0;
 	unsigned long int k = 0;
 	int a = 0, b, c;
-	
+
 	while (h / i > 0)
 	{
 		j++;

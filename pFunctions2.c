@@ -16,13 +16,18 @@ int expo(int a, int b)
 	}
 	return (r);
 }
+/**
+ * printb - Prints binary
+ * @lst: va_list
+ * Return: 1 on success
+ */
 int printb(va_list *lst)
 {
 	unsigned int u = va_arg(*lst, unsigned int);
 	unsigned int i = 2, j = 0;
 	unsigned int k;
 	int a = 0, b, c;
-	
+
 	while (u / i > 0)
 	{
 		j++;
@@ -44,4 +49,15 @@ int printb(va_list *lst)
 	a += 0;
 	k == 0 ? _putchar('0') : _putchar('0' + k);
 	return (a);
+}
+/**
+ * printr - Print letter r
+ * @lst: arg
+ * Return: 1 on success
+ */
+int printr(__attribute__((unused)) va_list *lst)
+{
+	_putchar('%');
+	_putchar('r');
+	return (1);
 }

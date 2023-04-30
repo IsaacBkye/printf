@@ -14,7 +14,7 @@ int _printf(const char *fmt, ...)
 		{'x', printHex}, {'X', printhex}, {'o', printo},
 		{'s', prints}, {'u', printu}, {'b', printb},
 		{'p', printHex}, {'%', printper}, {'*', printx},
-		{'\0', NULL}
+		{'r', printr}, {'\0', NULL}
 	};
 	va_start(lst, fmt);
 	if (!(fmt && *fmt))
