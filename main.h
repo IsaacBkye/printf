@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include <string.h>
+#include <limits.h>
 int _printf(const char *fmt, ...);
 void intHdle(int x);
 /**
@@ -19,17 +20,17 @@ void intHdle(int x);
 typedef struct idxFunc
 {
 	char c;
-	void (*func)(va_list *);
+	int (*func)(va_list *);
 } idxFunc;
 int _putchar(char a);
-void printi(va_list *lst);
-void prints(va_list *lst);
-void printper(va_list *lst);
-void printd(va_list *lst);
-void printc(va_list *lst);
-void printx(va_list *lst);
-void printu(va_list *lst);
-void printo(va_list *lst);
-void printHex(va_list *lst);
-void printhex(va_list *lst);
+int printi(va_list *lst);
+int prints(va_list *lst);
+int printper(va_list *lst);
+int printd(va_list *lst);
+int printc(va_list *lst);
+int printx(va_list *lst);
+int printu(va_list *lst);
+int printo(va_list *lst);
+int printHex(va_list *lst);
+int printhex(va_list *lst);
 #endif

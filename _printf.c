@@ -11,8 +11,8 @@ int _printf(const char *fmt, ...)
 
 	idxFunc writer[] = {
 		{'c', printc}, {'d', printd}, {'i', printi},
-		{'x', printHex}, {'X', printhex}, {'o', printo},
-		{'s', prints}, {'u', printu},
+		{'x', printHex}, {'X', printhex}, /*{'o', printo},*/
+		{'s', prints}, /*{'u', printu},*/
 		{'p', printHex}, {'%', printper}, {'*', printx},
 		{'\0', NULL}
 	};
@@ -23,24 +23,22 @@ int _printf(const char *fmt, ...)
 	{
 		if (*fmt != '%')
 		{
-			_putchar(*fmt);
+			i += _putchar(*fmt);
 
 		} else
 		{
 			fmt++;
-			i++;
 			while (writer[w].c != '\0')
 			{
 				if (*fmt == writer[w].c)
 				{
-					writer[w].func(&lst);
+					i += writer[w].func(&lst);
 					break;
 				}
 				w++;
 			}
 		}
 		fmt++;
-		i++;
 	}
 	va_end(lst);
 	return (i);

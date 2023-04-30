@@ -2,25 +2,30 @@
 /**
  * printc - Prints characters
  * @lst: va_list
+ * Return: 1 on success
  */
-void printc(va_list *lst)
+int printc(va_list *lst)
 {
 	char a = (char)va_arg(*lst, int);
 
 	_putchar(a);
+	return (1);
 }
 /**
  * printd - Prints decimal
  * @lst: va_list
+ * Return: 1 on success
  */
-void printd(va_list *lst)
+int printd(va_list *lst)
 {
 	long int d = (int)va_arg(*lst, int);
 	long int i = 10, j = 0, k;
-	
+	int a = 0;
+
 	if (d < 0)
 	{
 		_putchar('-');
+		a += 1;
 		d = -d;
 	}
 	while (d / i > 0)
@@ -35,39 +40,49 @@ void printd(va_list *lst)
 			k = d / (10 ^ j);
 			k = k % 10;
 			k == 0 ? _putchar('0') : _putchar('0' + k);
+			a += 1;
 			j--;
 		}
 	}
 	k = (d % 10);
 	k == 0 ? _putchar('0') : _putchar('0' + k);
+	a += 1;
+	return (a);
 }
 /**
  * prints - Prints string
  * @lst: va_list
+ * Return: 1 on success
  */
-void prints(va_list *lst)
+int prints(va_list *lst)
 {
 	char *a = va_arg(*lst, char *);
-	
+	int i = 0;
+
 	while (*a != '\0')
 	{
 		_putchar(*a);
+		i += 1;
 		a++;
 	}
+	return (i);
 }
 /**
  * printi - Prints float
  * @lst: va_list
+ * Return: 1 on success
  */
-void printi(va_list *lst)
+int printi(va_list *lst)
 {
 	long int F = (int)va_arg(*lst, int);
 	long int i = 10, j = 0;
 	long int k, l = 10;
+	int b = 0;
 
 	if (F < 0)
 	{
 		_putchar('-');
+		b += 1;
 		F = -F;
 	}
 	while (F / i > 0)
@@ -82,17 +97,22 @@ void printi(va_list *lst)
 			k = F / (10 ^ j);
 			k = k % l;
 			k == 0 ? _putchar('0') : _putchar('0' + k);
+			b += 1;
 			j--;
 		}
 	}
 	k = (F % l);
 	k == 0 ? _putchar('0') : _putchar('0' + k);
+	b += 1;
+	return (b);
 }
 /**
  * printper - Prints %
  * @lst: va_list
+ * Return: 1 on success
  */
-void printper(__attribute__ ((unused)) va_list *lst)
+int printper(__attribute__ ((unused)) va_list *lst)
 {
 	_putchar('%');
+	return (1);
 }
