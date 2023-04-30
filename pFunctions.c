@@ -20,7 +20,7 @@ int printd(va_list *lst)
 {
 	long int d = (int)va_arg(*lst, int);
 	long int i = 10, j = 0, k;
-	int a = 0;
+	int a = 0, b, c;
 
 	if (d < 0)
 	{
@@ -37,8 +37,9 @@ int printd(va_list *lst)
 	{
 		while (j > 0)
 		{
-			k = d / (10 ^ j);
-			k = k % 10;
+			c = expo(10, j);
+			b = d / c;
+			k = b % 10;
 			k == 0 ? _putchar('0') : _putchar('0' + k);
 			a += 1;
 			j--;
@@ -77,7 +78,7 @@ int printi(va_list *lst)
 	long int F = (int)va_arg(*lst, int);
 	long int i = 10, j = 0;
 	long int k, l = 10;
-	int b = 0;
+	int b = 0, a, c;
 
 	if (F < 0)
 	{
@@ -94,8 +95,9 @@ int printi(va_list *lst)
 	{
 		while (j > 0)
 		{
-			k = F / (10 ^ j);
-			k = k % l;
+			c = expo(10, j);
+			a = F / c;
+			k = a % l;
 			k == 0 ? _putchar('0') : _putchar('0' + k);
 			b += 1;
 			j--;

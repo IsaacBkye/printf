@@ -11,8 +11,8 @@ int _printf(const char *fmt, ...)
 
 	idxFunc writer[] = {
 		{'c', printc}, {'d', printd}, {'i', printi},
-		{'x', printHex}, {'X', printhex}, /*{'o', printo},*/
-		{'s', prints}, {'b', printu},
+		{'x', printHex}, {'X', printhex}, {'o', printo},
+		{'s', prints}, {'u', printu}, {'b', printb},
 		{'p', printHex}, {'%', printper}, {'*', printx},
 		{'\0', NULL}
 	};

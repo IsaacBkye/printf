@@ -28,6 +28,7 @@ int printi(va_list *lst);
 int prints(va_list *lst);
 int printper(va_list *lst);
 int printd(va_list *lst);
+int printb(va_list *lst);
 int printc(va_list *lst);
 int printx(va_list *lst);
 int printu(va_list *lst);
