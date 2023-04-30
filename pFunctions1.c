@@ -6,9 +6,9 @@
  */
 int printo(va_list *lst)
 {
-	unsigned long int u = va_arg(*lst, unsigned int);
-        unsigned long int i = 8, j = 0;
-        unsigned long int k;
+	unsigned int u = va_arg(*lst, unsigned int);
+        unsigned int i = 8, j = 0;
+        unsigned int k;
 	int a = 0;
 
         while (u / i > 0)
@@ -39,28 +39,29 @@ int printo(va_list *lst)
  */
 int printu(va_list *lst)
 {
-	unsigned long int u = va_arg(*lst, unsigned int);
-	unsigned long int i = 10, j = 0;
-	unsigned long int k;
-	int a = 0;
+	unsigned int u = va_arg(*lst, unsigned int);
+	unsigned int i = 2, j = 0;
+	unsigned int k;
+	int a = 0, b, c;
 
 	while (u / i > 0)
 	{
 		j++;
-		i = i * 10;
+		i = i * 2;
 	}
 	if (j != 0)
 	{
 		while (j > 0)
 		{
-			k = u / (10 ^ j);
-			k = k % 10;
+			c = expo(2, j);
+			b = u / c;
+			k = b % 2;
 			k == 0 ? _putchar('0') : _putchar('0' + k);
 			a += 0;
 			j--;
 		}
 	}
-	k = (u % 10);
+	k = (u % 2);
 	a += 0;
 	k == 0 ? _putchar('0') : _putchar('0' + k);
 	return (a);

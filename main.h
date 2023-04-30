@@ -10,6 +10,7 @@
 #include <stdarg.h>
 #include <string.h>
 #include <limits.h>
+int expo(int a, int b);
 int _printf(const char *fmt, ...);
 void intHdle(int x);
 /**
